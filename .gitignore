@@ -1,7 +1,7 @@
 *.iml
 *.idea
 out/
-workspace.xml
+.idea/*
 
 .gradle
 build/
