@@ -1,6 +1,7 @@
 *.iml
 *.idea
 out/
+workspace.xml
 
 .gradle
 build/
