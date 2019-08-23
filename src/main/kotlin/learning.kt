@@ -96,3 +96,98 @@ fun evaporator(content: Double, evap_per_day: Double, threshold: Double): Int {
     return daysEvaporating
 
 }
+
+fun printerError(s: String): String {
+
+    //val errorCharacters = "nopqrstuvwxyz"
+    return s.filter { it in 'n'..'z' }.count().toString() + "/" + s.length.toString()
+
+}
+
+fun partlist(arr: Array<String>): Array<Array<String>> {
+
+    val newArr: ArrayList<Array<String>> = ArrayList()
+    for (i in 1 until arr.size) {
+        newArr.add(arrayOf(arr.copyOfRange(0, i).joinToString(" "), arr.copyOfRange(i, arr.size).joinToString(" ")))
+    }
+    return newArr.toTypedArray()
+
+    /*
+       return (0 until arr.size - 1)
+            .map {
+                arrayOf(
+                        arr.sliceArray(0..it).joinToString(" "),
+                        arr.sliceArray(it + 1 until arr.size).joinToString(" ")
+                )
+            }.toTypedArray()
+     */
+}
+
+fun whoIsNext(names: List<String>, n: Int): String {
+
+    val tmpList: MutableList<String> = mutableListOf()
+    var counter = 0
+    var numberOfWords = 1
+    var moveCount = 0
+
+    if (n < names.size) {
+        return names[n - 1]
+    }
+
+    /* while ((moveCount + (names.size * numberOfWords)) < n) {
+         if (counter == 0) {
+             numberOfWords = 1
+         } else {
+             numberOfWords *= 2
+         }
+         counter += 1
+         moveCount += (names.size * numberOfWords)
+     }*/
+    var tmpValue: Int
+    do {
+        if (counter == 0) {
+            numberOfWords = 1
+        } else {
+            numberOfWords *= 2
+        }
+        counter += 1
+        tmpValue = moveCount + (names.size * numberOfWords)
+        if (tmpValue < n) {
+            moveCount += (names.size * numberOfWords)
+        }
+    } while ((moveCount + (names.size * numberOfWords)) < n)
+
+
+    names.forEach {
+        counter = numberOfWords
+        while (counter > 0) {
+            tmpList.add(it)
+            tmpList.add(it)
+            counter -= 1
+        }
+    }
+
+    return tmpList[n - moveCount - 1]
+
+}
+
+
+/*
+fun whoIsNext(names: List<String>, n: Int): String {
+
+    val tmpList: MutableList<String> = names.toMutableList()
+    var counter : Int = n
+    var tmpString : String
+
+    while (counter > 1) {
+        tmpString = tmpList[0]
+        tmpList.add(tmpString)
+        tmpList.add(tmpString)
+        tmpList.removeAt(0)
+        counter -= 1
+    }
+
+    return tmpList[0]
+
+}
+ */

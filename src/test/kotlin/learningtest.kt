@@ -2,6 +2,8 @@ package learning
 
 import org.junit.Assert.*
 import org.junit.Test
+import java.util.Arrays
+
 
 
 class LearninglTest {
@@ -69,4 +71,49 @@ class TestExample {
         assertEquals(59, evaporator(100.0,5.0,5.0))
 
     }
+}
+
+class TestExample1 {
+    @Test
+    fun testFixed() {
+        assertEquals("3/56", printerError("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"))
+        assertEquals("6/60", printerError("kkkwwwaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"))
+        assertEquals("11/65", printerError("kkkwwwaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyzuuuuu"))
+        assertEquals("0/53", printerError("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmm"))
+    }
+}
+
+class PartlistTest {
+    private fun testing(actual:String, expected:String) {
+        assertEquals(expected, actual)
+    }
+    @Test
+    fun test() {
+        println("Fixed Tests partlist")
+        var s1 = arrayOf<String>("cdIw", "tzIy", "xDu", "rThG")
+        var a = "[[cdIw, tzIy xDu rThG], [cdIw tzIy, xDu rThG], [cdIw tzIy xDu, rThG]]"
+        testing(Arrays.deepToString(partlist(s1)), a)
+        s1 = arrayOf<String>("I", "wish", "I", "hadn't", "come")
+        a = "[[I, wish I hadn't come], [I wish, I hadn't come], [I wish I, hadn't come], [I wish I hadn't, come]]"
+        testing(Arrays.deepToString(partlist(s1)), a)
+
+    }
+}
+
+class DoubleColaTests {
+    @Test
+    fun testWhoIsNext() {
+        val names = listOf("Sheldon", "Leonard", "Penny", "Rajesh", "Howard")
+        assertEquals(whoIsNext(names, 1), "Sheldon")
+        assertEquals(whoIsNext(names, 6), "Sheldon")
+        assertEquals(whoIsNext(names, 10), "Penny")
+        assertEquals(whoIsNext(names, 16), "Sheldon")
+        assertEquals(whoIsNext(names, 34), "Sheldon")
+       // assertEquals(whoIsNext(names, 52), "Penny")
+        //assertEquals(whoIsNext(names, 76), "Sheldon")
+       // assertEquals(whoIsNext(names, 7230702951), "Leonard")
+
+    }
+
+
 }
