@@ -1,5 +1,7 @@
 package learning
 
+import kotlin.math.ceil
+
 fun accum(s: String): String {
     // your codes
     var count: Int = 0
@@ -125,69 +127,27 @@ fun partlist(arr: Array<String>): Array<Array<String>> {
 
 fun whoIsNext(names: List<String>, n: Int): String {
 
-    val tmpList: MutableList<String> = mutableListOf()
-    var counter = 0
     var numberOfWords = 1
-    var moveCount = 0
+    var accumalatedMoveCount = names.size
+    var prevAccumlatedMoveCount  : Int
+
 
     if (n < names.size) {
         return names[n - 1]
     }
 
-    /* while ((moveCount + (names.size * numberOfWords)) < n) {
-         if (counter == 0) {
-             numberOfWords = 1
-         } else {
-             numberOfWords *= 2
-         }
-         counter += 1
-         moveCount += (names.size * numberOfWords)
-     }*/
-    var tmpValue: Int
     do {
-        if (counter == 0) {
-            numberOfWords = 1
-        } else {
-            numberOfWords *= 2
-        }
-        counter += 1
-        tmpValue = moveCount + (names.size * numberOfWords)
-        if (tmpValue < n) {
-            moveCount += (names.size * numberOfWords)
-        }
-    } while ((moveCount + (names.size * numberOfWords)) < n)
+        numberOfWords *= 2
+        prevAccumlatedMoveCount = accumalatedMoveCount
+        accumalatedMoveCount += (names.size * numberOfWords)
 
 
-    names.forEach {
-        counter = numberOfWords
-        while (counter > 0) {
-            tmpList.add(it)
-            tmpList.add(it)
-            counter -= 1
-        }
-    }
+    } while (n > accumalatedMoveCount)
 
-    return tmpList[n - moveCount - 1]
+
+    //val tmp: Double = (n.toDouble() - prevAccumlatedMoveCount) / numberOfWords
+    return names [ ceil ((n.toDouble() - prevAccumlatedMoveCount) / numberOfWords).toInt() - 1]
 
 }
 
 
-/*
-fun whoIsNext(names: List<String>, n: Int): String {
-
-    val tmpList: MutableList<String> = names.toMutableList()
-    var counter : Int = n
-    var tmpString : String
-
-    while (counter > 1) {
-        tmpString = tmpList[0]
-        tmpList.add(tmpString)
-        tmpList.add(tmpString)
-        tmpList.removeAt(0)
-        counter -= 1
-    }
-
-    return tmpList[0]
-
-}
- */

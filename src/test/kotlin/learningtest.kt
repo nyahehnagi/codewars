@@ -104,11 +104,12 @@ class DoubleColaTests {
     @Test
     fun testWhoIsNext() {
         val names = listOf("Sheldon", "Leonard", "Penny", "Rajesh", "Howard")
+        assertEquals(whoIsNext(names, 52), "Penny")
         assertEquals(whoIsNext(names, 1), "Sheldon")
         assertEquals(whoIsNext(names, 6), "Sheldon")
         assertEquals(whoIsNext(names, 10), "Penny")
         assertEquals(whoIsNext(names, 16), "Sheldon")
-        assertEquals(whoIsNext(names, 34), "Sheldon")
+
        // assertEquals(whoIsNext(names, 52), "Penny")
         //assertEquals(whoIsNext(names, 76), "Sheldon")
        // assertEquals(whoIsNext(names, 7230702951), "Leonard")
