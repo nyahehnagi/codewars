@@ -168,3 +168,24 @@ class VowelCount {
         assertEquals(3, getCount("example"))
     }
 }
+
+class EvenNumbersTest {
+    @Test
+    fun basicTests() {
+        assertEquals(listOf(4, 6, 8), evenNumbers(listOf(1, 2, 3, 4, 5, 6, 7, 8, 9), 3))
+        assertEquals(listOf(-8, 26), evenNumbers(listOf(-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26), 2))
+        assertEquals(listOf(6), evenNumbers(listOf(6, -25, 3, 7, 5, 5, 7, -3, 23), 1))
+    }
+}
+
+class TwoToOneTest {
+    @Test
+    fun test() {
+        println("longest Fixed Tests")
+        assertEquals("aehrsty", longest("aretheyhere", "yestheyarehere"))
+        assertEquals("abcdefghilnoprstu", longest("loopingisfunbutdangerous", "lessdangerousthancoding"))
+        assertEquals("acefghilmnoprstuy", longest("inmanylanguages", "theresapairoffunctions"))
+
+    }
+
+}

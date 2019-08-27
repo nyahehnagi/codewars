@@ -1,5 +1,6 @@
 package learning
 
+import java.lang.StringBuilder
 import javax.lang.model.element.NestingKind
 import kotlin.math.ceil
 
@@ -199,3 +200,13 @@ fun duplicates(array: IntArray): Int =
 fun getCount(str: String): Int {
     return str.filter { it == 'a' || it == 'e' || it == 'i' || it == 'o' || it == 'u' }.count()
 }
+
+fun evenNumbers(array: List<Int>, number: Int): List<Int> {
+
+    val evenNumbers = array.filter { it % 2 == 0 }
+
+    return evenNumbers.subList(evenNumbers.size - number,evenNumbers.size )
+
+}
+
+fun longest(s1:String, s2:String):String = (s1 + s2).toSet().sorted().joinToString ("")
