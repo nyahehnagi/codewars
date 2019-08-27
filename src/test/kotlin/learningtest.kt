@@ -3,7 +3,7 @@ package learning
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.Arrays
-
+import java.util.Random
 
 
 class LearninglTest {
@@ -117,4 +117,54 @@ class DoubleColaTests {
     }
 
 
+}
+
+class CenturyTest {
+
+    @Test fun testFixed() {
+        assertEquals(18, century(1705));
+        assertEquals(19, century(1900));
+        assertEquals(17, century(1601));
+        assertEquals(20, century(2000));
+        assertEquals(1,  century(89));
+    }
+}
+
+class MirrorTest {
+    @Test
+    fun `Basic Tests`() {
+        assertEquals("*********\n* ehT   *\n* dlroW *\n*********", mirror("The World"))
+        assertEquals("*********\n* olleH *\n* dlroW *\n*********", mirror("Hello World"))
+        assertEquals("************\n* srawedoC *\n************", mirror("Codewars"))
+    }
+}
+
+class MapsTest {
+    @Test
+    fun `Basic Tests`() {
+        assertArrayEquals(intArrayOf(2, 4, 6), maps(intArrayOf(1, 2, 3)))
+        assertArrayEquals(intArrayOf(8, 2, 2, 2, 8), maps(intArrayOf(4, 1, 1, 1, 4)))
+        assertArrayEquals(intArrayOf(4, 4, 4, 4, 4, 4), maps(intArrayOf(2, 2, 2, 2, 2, 2)))
+    }
+}
+
+class PairsTest {
+    @Test
+    fun simpleTests() {
+        assertEquals(2, duplicates(intArrayOf(1, 2, 5, 6, 5, 2)))
+        assertEquals(4, duplicates(intArrayOf(1, 2, 2, 20, 6, 20, 2, 6, 2)))
+        assertEquals(3, duplicates(intArrayOf(0, 0, 0, 0, 0, 0, 0)))
+        assertEquals(1, duplicates(intArrayOf(1000, 1000)))
+        assertEquals(0, duplicates(intArrayOf()))
+        assertEquals(0, duplicates(intArrayOf(54)))
+    }
+}
+
+class VowelCount {
+    @Test
+    fun testFixed() {
+        assertEquals(5, getCount("abracadabra"))
+        assertEquals(1, getCount("test"))
+        assertEquals(3, getCount("example"))
+    }
 }

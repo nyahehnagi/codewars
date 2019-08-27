@@ -1,5 +1,6 @@
 package learning
 
+import javax.lang.model.element.NestingKind
 import kotlin.math.ceil
 
 fun accum(s: String): String {
@@ -129,7 +130,7 @@ fun whoIsNext(names: List<String>, n: Int): String {
 
     var numberOfWords = 1
     var accumalatedMoveCount = names.size
-    var prevAccumlatedMoveCount  : Int
+    var prevAccumlatedMoveCount: Int
 
 
     if (n < names.size) {
@@ -146,8 +147,55 @@ fun whoIsNext(names: List<String>, n: Int): String {
 
 
     //val tmp: Double = (n.toDouble() - prevAccumlatedMoveCount) / numberOfWords
-    return names [ ceil ((n.toDouble() - prevAccumlatedMoveCount) / numberOfWords).toInt() - 1]
+    return names[ceil((n.toDouble() - prevAccumlatedMoveCount) / numberOfWords).toInt() - 1]
 
 }
 
+fun century(number: Int): Int {
 
+    return (number + 99) / 100
+}
+
+fun mirror(text: String): String {
+
+    var counter = 1
+    var firstAndLastLine = ""
+    val stringParts = text.split(" ")
+    var maxLength = 0
+    var tmpString: String
+
+    stringParts.forEach {
+        if (it.length > maxLength) {
+            maxLength = it.length
+        }
+    }
+    while (counter <= (maxLength + 4)) {
+        firstAndLastLine += "*"
+        counter += 1
+    }
+
+    tmpString = firstAndLastLine + "\n"
+    stringParts.forEach {
+        if (it.length == maxLength) {
+            tmpString = tmpString + "* " + it.reversed() + " *\n"
+        } else {
+            tmpString = tmpString + "* " + it.reversed()
+            val tmpCount = maxLength - it.length + 1
+            for (i in 1..tmpCount) tmpString += " "
+            tmpString += "*\n"
+        }
+    }
+    tmpString += firstAndLastLine
+
+    println(tmpString)
+    return tmpString
+}
+
+fun maps(x: IntArray): IntArray = x.map { value -> value.times(2) }.toIntArray()
+
+fun duplicates(array: IntArray): Int =
+    array.toList().groupingBy { it }.eachCount().filter { it.value > 1 }.map { (it.value / 2) }.sumBy { it }
+
+fun getCount(str: String): Int {
+    return str.filter { it == 'a' || it == 'e' || it == 'i' || it == 'o' || it == 'u' }.count()
+}
