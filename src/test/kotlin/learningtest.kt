@@ -189,3 +189,24 @@ class TwoToOneTest {
     }
 
 }
+
+class TestReverseLetter {
+    @Test
+    fun `Basic Tests` () {
+        val str = "krishan"
+        assertEquals("nahsirk", reverseLetter("krishan"))
+        assertEquals("nortlu", reverseLetter("ultr53o?n"))
+        assertEquals("cba", reverseLetter("ab23c"))
+        assertEquals("nahsirk", reverseLetter("krish21an"))
+    }
+}
+
+class MiddleTest {
+    @Test
+    fun basicTest() {
+        assertEquals("dd", getMiddle("middle"));
+        assertEquals("es", getMiddle("test"));
+        assertEquals("t", getMiddle("testing"));
+        assertEquals("A", getMiddle("A"));
+    }
+}

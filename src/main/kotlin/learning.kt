@@ -205,8 +205,21 @@ fun evenNumbers(array: List<Int>, number: Int): List<Int> {
 
     val evenNumbers = array.filter { it % 2 == 0 }
 
-    return evenNumbers.subList(evenNumbers.size - number,evenNumbers.size )
+    return evenNumbers.subList(evenNumbers.size - number, evenNumbers.size)
 
 }
 
-fun longest(s1:String, s2:String):String = (s1 + s2).toSet().sorted().joinToString ("")
+fun longest(s1: String, s2: String): String = (s1 + s2).toSet().sorted().joinToString("")
+
+fun reverseLetter(str: String): String = str.filter { it in 'a'..'z' }.reversed()
+//return str.filter(Char::isLetter).reversed()
+
+fun getMiddle(word: String): String {
+
+    return if ((word.length).rem(2) == 0) {
+        word.substring((word.length / 2 - 1)..(word.length / 2))
+    } else {
+        word.substring(word.length / 2..word.length / 2)
+    }
+
+}
