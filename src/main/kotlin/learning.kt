@@ -1,8 +1,7 @@
 package learning
 
-import java.lang.StringBuilder
-import javax.lang.model.element.NestingKind
 import kotlin.math.ceil
+import kotlin.math.*
 
 fun accum(s: String): String {
     // your codes
@@ -223,3 +222,145 @@ fun getMiddle(word: String): String {
     }
 
 }
+
+fun findShort(s: String): Int {
+    var shortest = s
+    s.split(" ").forEach {
+        if (it.length < shortest.length) {
+            shortest = it
+        }
+    }
+    return shortest.length
+}
+
+fun mxdiflg(a1: Array<String>, a2: Array<String>): Int {
+
+    if (a1.isEmpty() || a2.isEmpty()) {
+        return -1
+    }
+
+    val minArray1 = a1.map { it.length }.min() ?: 0
+    val maxArray1 = a1.map { it.length }.max() ?: 0
+
+    val minArray2 = a2.map { it.length }.min() ?: 0
+    val maxArray2 = a2.map { it.length }.max() ?: 0
+
+    return max(abs(minArray1 - maxArray2), abs(maxArray1 - minArray2))
+
+}
+
+fun argsCount(vararg args: Any): Int {
+    //return args.toList().count()
+    return args.count()
+}
+
+fun wallpaper(l: Double, w: Double, h: Double): String {
+
+    if ((l * w * h) <= 0) {
+        return "zero"
+    }
+
+    val roomPerimeter = l.times(2).plus(w.times(2))
+    val numberOfRolls = h.div(10) * roomPerimeter.div(.52)
+    val extraRolls = numberOfRolls.times(15).div(100)
+
+    val totalRolls = ceil(numberOfRolls.plus(extraRolls)).toInt()
+    val numberWords = listOf(
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen",
+        "twenty"
+    )
+
+    return numberWords[totalRolls - 1]
+}
+
+fun nbDig(n: Int, d: Int): Int {
+
+    val list = mutableListOf<String>()
+    var counter = 0
+
+    for (i in 0..n) {
+        list.add((i * i).toString())
+    }
+
+    list.filter { d.toString() in it }.forEach {
+        counter += it.split("").filter { it == d.toString() }.count()
+    }
+
+    return counter
+}
+
+fun nbYear(pp0: Int, percent: Double, aug: Int, p: Int): Int {
+
+    var currentPopulation = pp0.toDouble()
+    var yearCount = 0
+    while (currentPopulation < p.toDouble()) {
+        currentPopulation = (currentPopulation * (1 + (percent / 100))) + aug.toDouble()
+        yearCount++
+    }
+
+    return yearCount
+}
+
+fun makeComplement(dna: String): String {
+    //return dna.replace("A", "X").replace("G", "Y").replace("T","A").replace("C", "G").replace ("X", "T").replace("Y", "C")
+    return dna.map {
+        when (it) {
+            'A' -> 'T'
+            'T' -> 'A'
+            'C' -> 'G'
+            'G' -> 'C'
+            else -> it
+        }
+    }.joinToString("")
+
+
+}
+
+fun gps(s: Int, x: DoubleArray): Int {
+
+    if (x.sum() <= 1) return 0
+
+    val averageSpeed = DoubleArray(x.size - 1) { i -> 3600 * (x[i + 1] - x[i]) / s }
+    val maxAverageSpeedPerHour = averageSpeed.max()
+
+    return floor(maxAverageSpeedPerHour!!).toInt()
+}
+
+fun containAllRots(strng: String, arr: ArrayList<String>): Boolean =
+    arr.containsAll(List(strng.length) { i -> strng.takeLast(strng.length - i) + strng.take(i) })
+
+fun containAllRots1(strng:String, arr:ArrayList<String>):Boolean {
+    return arr.containsAll(List(strng.length) { (strng.drop(it) + strng.take(it)) })
+}
+/*
+fun fizzBuzz(n: Int): Array<String> {
+    var fizzBuzzList   = List(n){n.toString()}
+
+    fizzBuzzList.forEachIndexed() {
+        if (it.toInt().rem(3)== 0 && it.toInt().rem(5) == 0)
+        { it = "FizzBuzz"}
+
+    }
+
+
+    return fizzBuzzArray
+}
+        */
