@@ -2,6 +2,11 @@ package learning
 
 import kotlin.math.ceil
 import kotlin.math.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 fun accum(s: String): String {
     // your codes
@@ -347,20 +352,46 @@ fun gps(s: Int, x: DoubleArray): Int {
 fun containAllRots(strng: String, arr: ArrayList<String>): Boolean =
     arr.containsAll(List(strng.length) { i -> strng.takeLast(strng.length - i) + strng.take(i) })
 
-fun containAllRots1(strng:String, arr:ArrayList<String>):Boolean {
+fun containAllRots1(strng: String, arr: ArrayList<String>): Boolean {
     return arr.containsAll(List(strng.length) { (strng.drop(it) + strng.take(it)) })
 }
-/*
+
 fun fizzBuzz(n: Int): Array<String> {
-    var fizzBuzzList   = List(n){n.toString()}
+    var fizzBuzzArray = (1..n).toList().map { it.toString() }.toTypedArray()
 
-    fizzBuzzList.forEachIndexed() {
-        if (it.toInt().rem(3)== 0 && it.toInt().rem(5) == 0)
-        { it = "FizzBuzz"}
-
+    fizzBuzzArray.forEachIndexed() { index, ele ->
+        if (ele.toInt().rem(3) == 0 && ele.toInt().rem(5) == 0) {
+            fizzBuzzArray[index] = "FizzBuzz"
+        } else if (ele.toInt().rem(5) == 0) {
+            fizzBuzzArray[index] = "Buzz"
+        } else if (ele.toInt().rem(3) == 0) {
+            fizzBuzzArray[index] = "Fizz"
+        }
     }
-
 
     return fizzBuzzArray
 }
-        */
+
+fun dateNbDays(a0:Double, a:Double, p:Double):String {
+
+    val dailyInterstMultiplier = (p/36000) + 1
+    var accumulatedAmount = a0
+    var date  = LocalDate.of (2016,1, 1)
+
+
+    while (accumulatedAmount < a){
+        accumulatedAmount = accumulatedAmount * dailyInterstMultiplier
+        date = date.plusDays(1)
+    }
+
+    return  date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+}
+
+fun noSpace(x: String): String  = x.replace(" ","")
+
+object GrassHopper {
+    fun summation(n:Int):Int {
+        //val listOfNumbers : List<Int> = listOf<Int>(1..n)
+       //return listOfNumbers.fold(1){1 + it}
+    }
+}

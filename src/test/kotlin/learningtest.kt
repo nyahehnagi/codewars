@@ -348,3 +348,29 @@ class FizzBuzzTests {
         assertArrayEquals(expected, fizzBuzz(10))
     }
 }
+
+
+class DateDaysTest {
+    private fun testing(actual:String, expected:String) {
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun test() {
+        println("Fixed Tests dateNbDays")
+        testing(dateNbDays(4281.0, 5087.0, 2.0), "2024-07-03")
+        testing(dateNbDays(4620.0, 5188.0, 2.0), "2021-09-19")
+
+    }
+
+
+class GrassHopperTest {
+    @Test
+    fun test1() {
+        assertEquals(1, GrassHopper.summation(1))
+    }
+    @Test
+    fun test2() {
+        assertEquals(36, GrassHopper.summation(8))
+    }
+}
