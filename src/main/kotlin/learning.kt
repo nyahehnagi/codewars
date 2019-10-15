@@ -390,8 +390,7 @@ fun dateNbDays(a0:Double, a:Double, p:Double):String {
 fun noSpace(x: String): String  = x.replace(" ","")
 
 object GrassHopper {
-    fun summation(n:Int):Int {
-        //val listOfNumbers : List<Int> = listOf<Int>(1..n)
-       //return listOfNumbers.fold(1){1 + it}
-    }
+    fun summation(n:Int):Int = IntArray(n) { it + 1 }.fold(0){acc, element -> acc + element }
 }
+
+

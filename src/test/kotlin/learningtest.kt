@@ -351,7 +351,7 @@ class FizzBuzzTests {
 
 
 class DateDaysTest {
-    private fun testing(actual:String, expected:String) {
+    private fun testing(actual: String, expected: String) {
         assertEquals(expected, actual)
     }
 
@@ -362,7 +362,7 @@ class DateDaysTest {
         testing(dateNbDays(4620.0, 5188.0, 2.0), "2021-09-19")
 
     }
-
+}
 
 class GrassHopperTest {
     @Test
