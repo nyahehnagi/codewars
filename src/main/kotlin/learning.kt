@@ -393,4 +393,4 @@ object GrassHopper {
     fun summation(n:Int):Int = IntArray(n) { it + 1 }.fold(0){acc, element -> acc + element }
 }
 
-
+fun removeChar(str: String): String =  str.substring(1,str.length - 1)

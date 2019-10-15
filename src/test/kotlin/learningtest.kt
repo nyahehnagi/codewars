@@ -374,3 +374,14 @@ class GrassHopperTest {
         assertEquals(36, GrassHopper.summation(8))
     }
 }
+
+
+class ExampleTests {
+    @Test
+    fun basicTests() {
+        assertEquals("loquen", removeChar("eloquent"))
+        assertEquals("ountr", removeChar("country"))
+        assertEquals("erso", removeChar("person"))
+        assertEquals("lac", removeChar("place"))
+    }
+}
